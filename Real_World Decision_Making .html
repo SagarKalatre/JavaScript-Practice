@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <!-- Task 1. E-Commerce Order Eligibility: An order can be placed only when the user is logged in, the product is
+        // available,
+        // and the delivery address is verified. Check all conditions and display the appropriate reason if the order cannot be
+        // placed. -->
+        let username = "Sagar";
+        let password = "Sagar123";
+        let loginN = "Sagar";
+        let loginP = "Sagar123";
+        let product = "available";
+        let address = "passed";
+
+        if (loginN == username && loginP == password) {
+            if (product == "available" && address == "passed") {
+                console.log("Order Plcaed");
+            } else if (product != "available") {
+                console.log("Product is not available");
+            } else {
+                console.log("Address is not Found");
+            }
+        } else {
+            console.log("User are not login");
+        }
+
+        // <!-- Task 2. Employee Work-from-Home Approval: Approve work-from-home requests based on employee attendance,
+        // completed tasks, and manager approval. Differentiate between approved, rejected, and pending requests. -->
+        let attendance = 80;
+        let task = "completed";
+        let manager = "approval";
+
+        if (attendance >= 80) {
+            if (task == "completed") {
+                if (manager == "approval") {
+                    console.log("approved");
+                } else if (manager == "rejected") {
+                    console.log("rejected");
+                } else {
+                    console.log("Pending");
+                }
+            } else {
+                console.log("Pending request");
+            }
+        } else {
+            console.log("rejected");
+        }
+
+        // <!-- Task 3. Bank Transaction Risk Checker: Accept transaction amount, account balance, and transaction status. Block
+        // transactions exceeding the daily limit of ■50,000 or available balance. -->
+        let amount = 30000;
+        let balance = 40000;
+        let status = "valid";
+        if (amount <= 50000) {
+            if (amount <= balance) {
+                if (status == "valid") {
+                    console.log("Amount wothdrow")
+                } else {
+                    console.log("transaction status Not valid")
+                }
+            } else {
+                console.log("balance not suffecent");
+            }
+        } else {
+            console.log("Daily Limit Exceeded");
+        }
+
+        // <!--  Task 4. Internet Data Usage Alert: Accept daily data usage and display alerts: 0–50% Normal usage; 51–80%
+        // Warning; 81–99% High usage; 100% Data exhausted. -->
+        let alert = 10;
+        if (alert >= 0 && alert <= 50) {
+            console.log("Normal usage")
+        } else if (alert >= 51 && alert <= 80) {
+            console.log("Warning")
+        } else if (alert >= 81 && alert <= 99) {
+            console.log("High Usage")
+        } else if (alert == 100) {
+            console.log("Data exhausted")
+        } else {
+            console.log("Data outoff limit")
+        }
+
+        // Task 5. Job Application Shortlisting: Shortlist candidates based on graduation percentage, required skills, experience,
+        // and communication score. Display the exact reason for rejection.
+        let pg = 61;
+        let rs = "Java";
+        let experience = 1;
+        let communication = 8;
+
+        if (pg < 60) {
+            console.log("Rejected: Low Graduation Percentage");
+        } else if (rs != "Java") {
+            console.log("Rejected: Required Skills Missing");
+        } else if (experience < 1) {
+            console.log("Rejected: Insufficient Experience");
+        } else if (communication < 7) {
+            console.log("Rejected: Low Communication Score");
+        } else {
+            console.log("Candidate Shortlisted");
+        }
+        
+        // Task 6. Food Delivery Eligibility: Check whether a restaurant is open, accepts online orders, has the selected food
+        // item available, and delivers to the customer's location.
+        let restaurant = "open";
+        let onlineOrder = "yes";
+        let food = "available";
+        let delivery = "yes";
+        if (restaurant == "open") {
+            if (onlineOrder == "yes") {
+                if (food == "available") {
+                    if (delivery == "yes") {
+                        console.log("Order placed successfully");
+                    } else {
+                        console.log("Delivery not available in your location");
+                    }
+                } else {
+                    console.log("Selected food is unavailable");
+                }
+            } else {
+                console.log("Online orders not accepted");
+            }
+        } else {
+            console.log("Restaurant is closed")
+        }
+        
+        // Task 7. InsurancePremium Eligibility: Calculate insurance premium based on customer age, vehicle type, and
+        // previous accident history. Reject customers who do not meet eligibility conditions.
+        let age = 25;
+        let vehicle_type = "bike";
+        let psh = "no";
+        if (age < 18) {
+            console.log("Rejected: Underage Customer");
+        } else if (vehicle_type != "car" && vehicle_type != "bike") {
+            console.log("Rejected: Invalid Vehicle Type");
+        } else if (psh != "no") {
+            console.log("Rejected: Accident History");
+        } else {
+            if (vehicle_type == "car") {
+                console.log(5000)
+            } else if (vehicle_type == "bike") {
+                console.log(3000);
+            }
+        }
+        
+        // Task 8. Online Payment Gateway: Validate payment using payment method, available balance, OTP verification, and
+        // transaction status. Display the correct payment result.
+        let paymentMethod = "UPI";
+        let amounts = 2000;
+        let balances = 5000;
+        let otp = "verified";
+        let sta = "success";
+        if (paymentMethod == "UPI" || paymentMethod == "Card" || paymentMethod == "Net Banking") {
+            if (amounts <= balances) {
+                if (otp == "verified") {
+                    if (sta == "success") {
+                        console.log("Payment Successful");
+                    } else {
+                        console.log("Payment Failed")
+                    }
+                } else {
+                    console.log("OTP Verification Failed");    
+                }
+            } else {
+                console.log("Insufficient Balance");   
+            }        
+        } else {
+            console.log("Invalid Payment Method");
+        }
+        
+        
+        // Task 9. College Admission System: Allocate admission based on entrance exam score, 12th percentage, available
+        // seats, and reservation category.
+        let entrance_exam = 75;
+        let percentage = 80;
+        let seats = 4;
+        let category = "OPEN";
+        if (entrance_exam >= 60) {
+            if (percentage >= 60) {
+                if (seats >= 1) {
+                    if (category == "OPEN" || category == "OBC" || category == "SC" || category == "ST") {
+                        console.log("Admission Confirmed");
+                    } else {
+                        console.log("Invalid Reservation Category");
+                    }
+                } else {
+                    console.log("Admission Rejected: No Seats Available");
+                }
+            } else {    
+                console.log("Rejected: Low 12th Percentage");
+            }
+        } else {
+            console.log("Rejected: Low Entrance Score");
+        }
+        
+        
+        // Task 10. Flight Boarding Eligibility: Check whether a passenger has a valid ticket, completed check-in, a valid identity
+        // document, and arrived before boarding closes.
+        let ticket = "valid";
+        let checkin = "completed";
+        let identity = "valid";
+        let boarding = "before";
+        if (ticket == "valid") {
+            if (checkin == "completed") {
+                if (identity == "valid") {
+                    if (boarding == "before") {
+                        console.log("Boarding Approved")
+                    } else {
+                        console.log("Boarding Rejected: Boarding Closed");
+                    }
+                } else {
+                    console.log("Boarding Rejected: Invalid Identity Document");
+                }
+            } else {
+                console.log("Boarding Rejected: Check-in Pending");
+            }
+        } else {
+            console.log("Boarding Rejected: Invalid Ticket");
+        }
+        
+        
+        // Task 11. Subscription Renewal System: Check subscription expiry date, payment status, and auto-renewal
+        // preference. Display whether the account should remain active, expire, or renew.
+        let expiry = "expired";
+        let payment = "success";
+        let autoRenew = "yes";
+        if (expiry != "expired") {
+            console.log("Account Active")
+        } else if (expiry == "expired" && autoRenew == "yes" && payment == "success") {
+            console.log("Subscription Renewed");
+        } else if (expiry == "expired" && autoRenew == "yes" && payment == "failed") {
+            console.log("Renewal Failed");
+        } else if (expiry == "expired" && autoRenew == "no") {
+            console.log("Subscription Expired");
+        }
+        
+        // Task 12. Employee Performance Classification: Classify employees using attendance percentage, project completion
+        // percentage, client feedback, and task deadlines.
+        let attendance_percentage = 79;
+        let percentages = 90;
+        let client_feedback = "good";
+        let task_deadlines = "ontime";
+        if (attendance_percentage >= 75) {
+            if (percentages >= 80) {
+                if (client_feedback == "good") {
+                    if (task_deadlines == "ontime") {
+                        console.log("Excellent Performance");
+                    } else {
+                        console.log("Deadline Missed");
+                    }
+                } else {
+                    console.log("Negative Client Feedback");
+                }
+            } else {
+                console.log("Low Project Completion");
+            }
+        } else {
+            console.log("Poor Attendance");
+        }
+        
+        // Task 13. Warehouse Stock Alert: Based on available stock, minimum stock level, and pending orders, determine
+        // whether to display In Stock, Low Stock, Out of Stock, or Reorder Required.
+        let available_stock = 15;
+        let minimum_stock = 10;
+        let pending_orders = 3;
+
+        if (available_stock == 0) {
+            console.log("Out of Stock");
+        } else if (available_stock < minimum_stock) {
+            if (pending_orders > 0) {
+                console.log("Reorder Required")
+            } else {
+                console.log("Low Stock")
+            }
+        } else {
+            console.log("In Stock"); 
+        }
+
+        
+        // Task 14. Online Meeting Access Control: Allow users to enter a meeting only if the meeting is active, the user is
+        // authorized, and the participant limit is not reached.
+        let meeting = "active";
+        let user = "authorized";
+        let participants = 20;
+        let limit = 50;
+
+        if (meeting == "active") {
+            if (user == "authorized") {
+                if (participants < limit) {
+                    console.log("Joined Successfully");
+                } else {
+                    console.log("Meeting is Full")
+                }
+            } else {
+                console.log("Access Denied")
+            }
+        } else {
+            console.log("Meeting is Not Active");
+        }
+        
+        
+        // Task 15. Courier Delivery Status: Accept delivery status and payment status. Decide whether the courier should be
+        // dispatched, delivered, returned, or held.
+        let delivery_status = "pending";
+        let payment_status = "paid";   
+        if (delivery_status == "ready" && payment_status == "paid") {
+            console.log("Dispatch Courier");
+        } else if (delivery_status == "Dispatched" && payment_status == "paid") {
+            console.log("Delivered")
+        } else if (delivery_status == "Cancelled" && payment_status == "paid") {
+            console.log("Return Courier")    
+        } else if (delivery_status == "ready" && payment_status == "unPaid"){
+            console.log("Hold Courier")
+        } else if (delivery_status == "Dispatched" && payment_status == "unPaid") {
+            console.log("Hold Courier")
+        } else {
+            console.log("Invalid Delivery or Payment Status")
+        }
+    </script>
+</body>
+
+</html>

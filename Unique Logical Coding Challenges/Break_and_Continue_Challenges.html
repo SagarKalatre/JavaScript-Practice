@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Level 4 – Break and Continue Challenges (41–50)
+        
+        // Task 41. Product Search in Inventory: Search for a product in a list of 100 product IDs. Stop searching immediately
+        // when the required ID is found using break.
+        let product_ID = [10, 30, 45, 67, 34, 89, 1044, 100];
+        let required_ID = 100;
+        let o = 0;
+        let found = false;
+
+        while (o < product_ID.length) {
+            
+            if (product_ID[o] == required_ID) {
+                console.log("ID Found..!")
+                found = true;
+                break;
+            }
+            o++;
+        }
+        if (found == false) {
+            console.log("Id Not Found...!")
+        }
+        
+        
+        
+        // Task 42. Invalid Transaction Filter: Process 50 transaction amounts. Skip zero and negative transactions using
+        // continue and calculate the total of valid transactions.
+        let transactions = [500, 1000, 0, -200, 750, -50, 300];
+        let p = 0;
+        let total = 0;
+
+        while (p < transactions.length) {
+            if (transactions[p] <= 0) {
+                console.log(transactions[p] + " Not Valid..!");
+                p++;
+                continue;
+            }
+
+            console.log(transactions[p] + "Valid...!")
+            total += transactions[p];
+            p++;
+        }
+        console.log(total)
+
+
+        // Task 43. Attendance Report Generator: Process attendance of 30 employees. Skip employees with invalid attendance
+        // data and identify employees having attendance below 75%.
+        let attendance = [90, 65, 80, -10, 72, 105, 95, 60];
+        let q = 0;
+
+        while (q < attendance.length) {
+            if (attendance[q] < 0 || attendance[q] > 100) {
+                console.log("Invalid Attendance - Skipped");
+                q++;
+                continue;
+
+            }
+            if (attendance[q] >= 75) {
+                console.log(attendance[q] + " Good Attendance")
+            } else {
+                console.log(attendance[q] + " Below 75%");
+            } 
+            q++;
+        }
+        
+        
+        // Task 44. Discount Campaign Processing: Process 100 customer orders. Skip orders below ■1,000 and stop
+        // processing when the campaign budget is exhausted.
+        let orders = [500, 1500, 2000, 800, 1800, 1200];
+        let campaign_budget = 5000;
+        let totals = 0;
+        let r = 0;
+
+        while (r < orders.length) {
+            if (orders[r] < 1000) {
+                console.log("Order is below 1000 So it's skipped..!")
+                r++;
+                continue;
+            } 
+            if (campaign_budget < 500) {
+                console.log("Campaign Budget Exhausted!");
+                break;
+            } 
+
+            campaign_budget -= 500;
+            totals += 500;
+
+            console.log("Order " + orders[r] + " is eligible for discount.");
+            console.log("Remaining Budget: " + campaign_budget);
+
+            r++;
+        }
+        if (campaign_budget == 0) {
+            console.log("Campaign Budget Exhausted!");
+        }
+
+        console.log("Total Discount Given: " + totals);
+        console.log("Remaining Campaign Budget: " + campaign_budget);
+        
+        
+        // Task 45. Student Result Filtering: Process marks of 50 students. Skip students with invalid marks and identify the first
+        // student scoring above 95.
+        let marks = [85, 90, 105, 76, 98, 65, 99, -5];
+        let founds = false;
+        let s = 0;
+
+        while (s < marks.length) {
+            if (marks[s] < 0 || marks[s] > 100) {
+                console.log("Student " + (s + 1) + ": Invalid Marks - Skipped")
+                s++;
+                continue;
+            }
+
+            if (marks[s] > 95) {
+                console.log("First student scoring above 95: Student " + (s + 1));
+                console.log("Marks : " + marks[s]);
+                founds = true;
+                break;
+            }
+            s++;
+        }
+        if (founds == false) {
+            console.log("No student scored above 95.");
+        }
+
+        
+        // Task 46. Duplicate Booking Prevention: Process multiple booking requests. Skip requests with already-booked seat
+        // numbers and stop when all seats are occupied.
+        
+        
+        // Task 47. Delivery Route Simulation: Process a sequence of delivery locations. Skip locations marked unavailable and
+        // stop the route when the delivery partner's fuel reaches zero.
+        
+        
+        // Task 48. Bank Transaction Audit: Process transactions one by one. Skip transactions below ■100 and stop
+        // immediately when a suspicious transaction above ■1,00,000 is detected.
+        
+        
+        // Task 49. Warehouse Product Dispatch: Process product dispatch requests. Skip requests with unavailable stock and
+        // stop when the daily dispatch capacity is reached.
+        
+        
+        // Task 50. Employee Task Allocation: Assign tasks to employees based on availability. Skip employees who are on
+        // leave and stop when all tasks have been assigned.
+    
+    
+    </script>
+</body>
+</html>

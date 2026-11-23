@@ -1,0 +1,608 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks 51–60</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background: #f4f4f4;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        select, button {
+            padding: 10px;
+            margin: 8px 5px 8px 0;
+            font-size: 15px;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        pre {
+            background: #222;
+            color: #00ff90;
+            padding: 20px;
+            min-height: 200px;
+            white-space: pre-wrap;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>JavaScript Logical Tasks 51–60</h2>
+
+    <select id="task">
+        <option value="51">Task 51 - Seat Allocation Matrix</option>
+        <option value="52">Task 52 - Tournament Ranking</option>
+        <option value="53">Task 53 - Bank Loan Repayment</option>
+        <option value="54">Task 54 - Smart Elevator</option>
+        <option value="55">Task 55 - Restaurant Table Allocation</option>
+        <option value="56">Task 56 - Automated Toll Collection</option>
+        <option value="57">Task 57 - Employee Access System</option>
+        <option value="58">Task 58 - Warehouse Order Priority</option>
+        <option value="59">Task 59 - Bank Fraud Detection</option>
+        <option value="60">Task 60 - Hospital Emergency Management</option>
+    </select>
+
+    <button onclick="runTask()">Run Task</button>
+
+    <h3>Output:</h3>
+    <pre id="output">Select a task and click Run Task.</pre>
+</div>
+
+<script>
+    function ask(message) {
+        return prompt(message);
+    }
+
+    function show(message) {
+        document.getElementById("output").textContent = message;
+    }
+
+    function runTask() {
+        let task = document.getElementById("task").value;
+
+        switch (task) {
+            case "51": task51(); break;
+            case "52": task52(); break;
+            case "53": task53(); break;
+            case "54": task54(); break;
+            case "55": task55(); break;
+            case "56": task56(); break;
+            case "57": task57(); break;
+            case "58": task58(); break;
+            case "59": task59(); break;
+            case "60": task60(); break;
+        }
+    }
+
+    // Task 51: Seat Allocation Matrix
+    function task51() {
+        let rows = 5;
+        let seats = 5;
+        let cinema = [];
+
+        for (let i = 0; i < rows; i++) {
+            cinema[i] = [];
+
+            for (let j = 0; j < seats; j++) {
+                cinema[i][j] = "Available";
+            }
+        }
+
+        let bookings = Number(ask("How many seats do you want to book?"));
+
+        for (let i = 0; i < bookings; i++) {
+            let row = Number(ask("Enter row number (1-5):")) - 1;
+            let seat = Number(ask("Enter seat number (1-5):")) - 1;
+
+            if (row < 0 || row >= rows || seat < 0 || seat >= seats) {
+                alert("Invalid row or seat number!");
+                continue;
+            }
+
+            if (cinema[row][seat] === "Occupied") {
+                alert("Seat already occupied!");
+            } else {
+                cinema[row][seat] = "Occupied";
+                alert("Seat booked successfully!");
+            }
+        }
+
+        let result = "CINEMA SEATING LAYOUT\n\n";
+
+        for (let i = 0; i < rows; i++) {
+            result += "Row " + (i + 1) + ": ";
+
+            for (let j = 0; j < seats; j++) {
+                result += cinema[i][j] === "Occupied" ? "[X] " : "[O] ";
+            }
+
+            result += "\n";
+        }
+
+        result += "\n[O] Available   [X] Occupied";
+        show(result);
+    }
+
+    // Task 52: Tournament Ranking System
+    function task52() {
+        let scores = [];
+
+        for (let i = 0; i < 20; i++) {
+            let score = Number(ask("Enter score of player " + (i + 1) + ":"));
+            scores.push(score);
+        }
+
+        let sortedScores = [...scores].sort((a, b) => b - a);
+
+        let highest = sortedScores[0];
+        let secondHighest = sortedScores.find(score => score < highest);
+        let lowest = sortedScores[sortedScores.length - 1];
+
+        let above80 = 0;
+
+        for (let i = 0; i < scores.length; i++) {
+            if (scores[i] > 80) {
+                above80++;
+            }
+        }
+
+        show(
+            "TOURNAMENT RANKING\n\n" +
+            "Highest Score: " + highest + "\n" +
+            "Second-Highest Distinct Score: " +
+                (secondHighest === undefined ? "Not available" : secondHighest) + "\n" +
+            "Lowest Score: " + lowest + "\n" +
+            "Players Scoring Above 80: " + above80
+        );
+    }
+
+    // Task 53: Bank Loan Repayment Simulation
+    function task53() {
+        let loan = Number(ask("Enter loan amount:"));
+        let payment = Number(ask("Enter monthly payment:"));
+        let interestRate = Number(ask("Enter monthly interest rate (%):"));
+
+        if (loan <= 0 || payment <= 0 || interestRate < 0) {
+            show("Invalid loan details.");
+            return;
+        }
+
+        let balance = loan;
+        let month = 0;
+        let result = "LOAN REPAYMENT DETAILS\n\n";
+
+        while (balance > 0) {
+            let interest = balance * interestRate / 100;
+            balance += interest;
+
+            if (payment <= interest) {
+                result += "Monthly payment is insufficient to repay the loan.";
+                show(result);
+                return;
+            }
+
+            let actualPayment = Math.min(payment, balance);
+            balance -= actualPayment;
+            month++;
+
+            result += "Month " + month +
+                " | Interest: " + interest.toFixed(2) +
+                " | Payment: " + actualPayment.toFixed(2) +
+                " | Balance: " + balance.toFixed(2) + "\n";
+
+            if (month >= 600) {
+                result += "\nStopped after 600 months.";
+                show(result);
+                return;
+            }
+        }
+
+        result += "\nLoan fully repaid in " + month + " months.";
+        show(result);
+    }
+
+    // Task 54: Smart Elevator Simulation
+    function task54() {
+        let currentFloor = 0;
+        let result = "SMART ELEVATOR\n\n";
+
+        while (true) {
+            let requestedFloor = Number(
+                ask("Current floor: " + currentFloor +
+                    "\nEnter requested floor (0-20), or -1 to stop:")
+            );
+
+            if (requestedFloor === -1) {
+                break;
+            }
+
+            if (requestedFloor < 0 || requestedFloor > 20 ||
+                !Number.isInteger(requestedFloor)) {
+                result += "Invalid floor request: " + requestedFloor + "\n";
+                continue;
+            }
+
+            if (requestedFloor > currentFloor) {
+                result += "Moving UP: " + currentFloor +
+                    " to " + requestedFloor + "\n";
+            } else if (requestedFloor < currentFloor) {
+                result += "Moving DOWN: " + currentFloor +
+                    " to " + requestedFloor + "\n";
+            } else {
+                result += "Elevator remains at floor " + currentFloor + "\n";
+            }
+
+            currentFloor = requestedFloor;
+        }
+
+        result += "\nElevator stopped at floor " + currentFloor + ".";
+        show(result);
+    }
+
+    // Task 55: Restaurant Table Allocation
+    function task55() {
+        let tables = Array(10).fill(false);
+        let result = "RESTAURANT TABLE MANAGEMENT\n\n";
+
+        while (true) {
+            let choice = ask(
+                "1. Book Table\n2. Release Table\n3. Exit\nEnter choice:"
+            );
+
+            if (choice === null || choice === "3") {
+                break;
+            }
+
+            if (choice === "1") {
+                let table = Number(ask("Enter table number (1-10):")) - 1;
+
+                if (table < 0 || table >= 10) {
+                    result += "Invalid table number.\n";
+                } else if (tables[table]) {
+                    result += "Table " + (table + 1) + " is already occupied.\n";
+                } else {
+                    tables[table] = true;
+                    result += "Table " + (table + 1) + " allocated successfully.\n";
+                }
+
+            } else if (choice === "2") {
+                let table = Number(ask("Enter table number to release (1-10):")) - 1;
+
+                if (table < 0 || table >= 10) {
+                    result += "Invalid table number.\n";
+                } else if (!tables[table]) {
+                    result += "Table " + (table + 1) + " is already available.\n";
+                } else {
+                    tables[table] = false;
+                    result += "Table " + (table + 1) + " released successfully.\n";
+                }
+
+            } else {
+                result += "Invalid choice.\n";
+            }
+        }
+
+        result += "\nFINAL TABLE STATUS\n";
+
+        for (let i = 0; i < tables.length; i++) {
+            result += "Table " + (i + 1) + ": " +
+                (tables[i] ? "Occupied" : "Available") + "\n";
+        }
+
+        show(result);
+    }
+
+    // Task 56: Automated Toll Collection
+    function task56() {
+        let vehicleCount = Number(ask("Enter number of vehicles:"));
+
+        let totalCollection = 0;
+        let result = "TOLL COLLECTION REPORT\n\n";
+
+        for (let i = 0; i < vehicleCount; i++) {
+            let type = ask(
+                "Vehicle " + (i + 1) +
+                "\nEnter type: Car / Bike / Truck"
+            );
+
+            if (type === null) break;
+
+            type = type.toLowerCase();
+
+            let toll = 0;
+
+            if (type === "car") {
+                toll = 100;
+            } else if (type === "bike") {
+                toll = 50;
+            } else if (type === "truck") {
+                toll = 200;
+            } else {
+                result += "Vehicle " + (i + 1) + ": Invalid vehicle type\n";
+                continue;
+            }
+
+            let fastag = ask("FASTag available? (yes/no)").toLowerCase();
+            let returnTrip = ask("Eligible for return trip? (yes/no)").toLowerCase();
+
+            if (fastag === "yes") {
+                toll = toll * 0.90;
+            }
+
+            if (returnTrip === "yes") {
+                toll = toll * 0.50;
+            }
+
+            totalCollection += toll;
+
+            result += "Vehicle " + (i + 1) +
+                " (" + type + ") - Toll: ₹" + toll.toFixed(2) + "\n";
+        }
+
+        result += "\nTotal Toll Collection: ₹" + totalCollection.toFixed(2);
+        show(result);
+    }
+
+    // Task 57: Multi-Level Employee Access System
+    function task57() {
+        let role = ask("Enter role: Admin / Manager / Employee");
+
+        if (role === null) return;
+
+        role = role.toLowerCase();
+
+        let result = "EMPLOYEE ACCESS SYSTEM\n\n";
+
+        if (role === "admin") {
+            result += "Welcome Admin!\n";
+            result += "- Manage Employees\n";
+            result += "- Manage Departments\n";
+            result += "- View Reports\n";
+            result += "- Delete Records\n";
+            result += "- Manage System Settings\n";
+
+        } else if (role === "manager") {
+            result += "Welcome Manager!\n";
+            result += "- View Employees\n";
+            result += "- Assign Tasks\n";
+            result += "- View Department Reports\n";
+            result += "- Restricted: Delete Records\n";
+
+        } else if (role === "employee") {
+            result += "Welcome Employee!\n";
+            result += "- View Profile\n";
+            result += "- View Assigned Tasks\n";
+            result += "- Update Task Status\n";
+            result += "- Restricted: Manage Employees\n";
+
+        } else {
+            result += "Invalid role. Access denied.";
+        }
+
+        let operation = ask(
+            "Enter restricted operation to test:\n" +
+            "1. Delete Records\n2. Manage Employees\n3. View Profile"
+        );
+
+        if (operation === "1") {
+            result += "\nDelete Records: " +
+                (role === "admin" ? "Access Granted" : "Access Denied");
+
+        } else if (operation === "2") {
+            result += "\nManage Employees: " +
+                (role === "admin" ? "Access Granted" : "Access Denied");
+
+        } else if (operation === "3") {
+            result += "\nView Profile: " +
+                (["admin", "manager", "employee"].includes(role)
+                    ? "Access Granted" : "Access Denied");
+        }
+
+        show(result);
+    }
+
+    // Task 58: Warehouse Order Priority System
+    function task58() {
+        let capacity = Number(ask("Enter warehouse processing capacity:"));
+        let count = Number(ask("Enter number of orders:"));
+
+        let orders = [];
+
+        for (let i = 0; i < count; i++) {
+            let priority = ask(
+                "Order " + (i + 1) +
+                "\nEnter priority: Emergency / Express / Normal"
+            );
+
+            let name = ask("Enter order name or ID:");
+
+            let priorityValue = {
+                emergency: 1,
+                express: 2,
+                normal: 3
+            };
+
+            if (priority === null || !priorityValue[priority.toLowerCase()]) {
+                continue;
+            }
+
+            orders.push({
+                name: name,
+                priority: priority,
+                value: priorityValue[priority.toLowerCase()]
+            });
+        }
+
+        orders.sort((a, b) => a.value - b.value);
+
+        let result = "WAREHOUSE ORDER PROCESSING\n\n";
+        let processed = 0;
+
+        for (let i = 0; i < orders.length; i++) {
+            if (processed >= capacity) {
+                result += "\nWarehouse capacity exhausted.";
+                break;
+            }
+
+            result += "Processed: " + orders[i].name +
+                " | Priority: " + orders[i].priority + "\n";
+
+            processed++;
+        }
+
+        result += "\nTotal Processed Orders: " + processed;
+        result += "\nPending Orders: " + (orders.length - processed);
+
+        show(result);
+    }
+
+    // Task 59: Bank Fraud Detection Simulation
+    function task59() {
+        let balance = Number(ask("Enter initial bank balance:"));
+        let threshold = Number(ask("Enter consecutive transaction threshold:"));
+
+        let consecutiveHigh = 0;
+        let result = "BANK FRAUD DETECTION REPORT\n\n";
+
+        for (let i = 0; i < 20; i++) {
+            let amount = Number(
+                ask("Enter transaction amount " + (i + 1) + ":")
+            );
+
+            if (amount <= 0) {
+                result += "Transaction " + (i + 1) + ": Invalid amount\n";
+                continue;
+            }
+
+            balance -= amount;
+
+            result += "Transaction " + (i + 1) +
+                ": ₹" + amount + " | Balance: ₹" + balance + "\n";
+
+            if (amount > 50000) {
+                result += "FRAUD ALERT: Transaction exceeds ₹50,000.\n";
+                result += "Processing stopped due to critical fraud condition.";
+                break;
+            }
+
+            if (amount > threshold) {
+                consecutiveHigh++;
+            } else {
+                consecutiveHigh = 0;
+            }
+
+            if (consecutiveHigh >= 2) {
+                result += "FRAUD ALERT: Two consecutive transactions exceeded threshold.\n";
+                result += "Processing stopped.";
+                break;
+            }
+
+            if (balance < 0) {
+                result += "FRAUD ALERT: Account balance became negative.\n";
+                result += "Processing stopped.";
+                break;
+            }
+        }
+
+        result += "\nFinal Balance: ₹" + balance.toFixed(2);
+        show(result);
+    }
+
+    // Task 60: Hospital Emergency Patient Management
+    function task60() {
+        let beds = Number(ask("Enter number of available hospital beds:"));
+        let count = Number(ask("Enter number of incoming patients:"));
+
+        let patients = [];
+
+        let priority = {
+            critical: 1,
+            high: 2,
+            medium: 3,
+            low: 4
+        };
+
+        for (let i = 0; i < count; i++) {
+            let name = ask("Enter patient " + (i + 1) + " name:");
+            let age = Number(ask("Enter patient age:"));
+            let level = ask("Enter emergency level: Critical / High / Medium / Low");
+
+            if (name === null || level === null) {
+                continue;
+            }
+
+            level = level.toLowerCase();
+
+            if (name.trim() === "" || age <= 0 || age > 120 ||
+                !Number.isInteger(age) || !priority[level]) {
+                patients.push({
+                    name: name,
+                    valid: false
+                });
+            } else {
+                patients.push({
+                    name: name,
+                    age: age,
+                    level: level,
+                    priority: priority[level],
+                    valid: true
+                });
+            }
+        }
+
+        let result = "HOSPITAL EMERGENCY MANAGEMENT\n\n";
+
+        let validPatients = patients.filter(patient => patient.valid);
+
+        validPatients.sort((a, b) => a.priority - b.priority);
+
+        let admitted = 0;
+
+        for (let i = 0; i < patients.length; i++) {
+            if (!patients[i].valid) {
+                result += "Invalid patient record skipped.\n";
+            }
+        }
+
+        for (let i = 0; i < validPatients.length; i++) {
+            if (admitted >= beds) {
+                result += "\nAll hospital beds are occupied.\n";
+                break;
+            }
+
+            result += "Admitted: " + validPatients[i].name +
+                " | Age: " + validPatients[i].age +
+                " | Emergency: " + validPatients[i].level + "\n";
+
+            admitted++;
+        }
+
+        result += "\nTotal Patients Admitted: " + admitted;
+        result += "\nRemaining Beds: " + Math.max(0, beds - admitted);
+
+        show(result);
+    }
+</script>
+
+</body>
+</html>

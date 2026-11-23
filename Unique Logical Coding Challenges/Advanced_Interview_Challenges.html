@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Task 51. Seat Allocation Matrix: Create a cinema seating arrangement using nested loops. Accept row and seat
+        // numbers for booking. Prevent booking of already occupied seats and display the updated seating layout.
+
+        let rows = 3;
+        let seats = 4;
+        let cinema = [];
+
+        for (let i = 0; i < rows; i++) {
+            cinema[i] = [];
+
+            for (let j = 0; j < seats; j++) {
+                cinema[i][j] = "Available";
+            }
+        }
+
+        let booking_row = 1;
+        let booking_seat = 2;
+
+        if (cinema[booking_row][booking_seat] == "Available") {
+            cinema[booking_row][booking_seat] = "Booked";
+            console.log("Seat Booked Successfully");
+        } else {
+            console.log("Seat Already Occupied");
+        }
+
+        for (let i = 0; i < rows; i++) {
+            console.log(cinema[i]);
+        }
+
+        
+        // Task 52. Tournament Ranking System: Process scores of 20 players. Identify the highest scorer, second-highest
+        // scorer, lowest scorer, and number of players scoring above 80.
+        let scores = [75, 85, 90, 65, 95, 78, 88, 92, 70, 60,
+                      82, 96, 55, 89, 91, 73, 84, 99, 68, 87];
+
+        let highest = 0;
+        let second_highest = 0;
+        let lowest = 100;
+        let above_80 = 0;
+
+        for (let i = 0 ; i < scores.length; i++) {
+            if (scores[i] > highest) {
+                second_highest = highest
+                highest = scores[i];
+            } else if (scores[i] > second_highest) {
+                second_highest = scores[i];
+            }
+            if (scores[i] < lowest) {
+                lowest = scores[i];
+            }
+            if (scores[i] > 80) {
+                above_80++;
+            }
+        }
+
+        console.log("Highest Score: " + highest);
+        console.log("Second Highest Score: " + second_highest);
+        console.log("Lowest Score: " + lowest);
+        console.log("Players Scoring Above 80: " + above_80);
+        
+        
+        // Task 53. Bank Loan Repayment Simulation: Accept loan amount, monthly payment, and interest rate. Calculate the
+        // outstanding balance month by month until the loan is fully repaid.
+        let loan_amount = 50000;
+        let monthly_payment = 10000;
+        let interest_rate = 2;
+
+        let outstanding_balance = loan_amount;
+        let month = 1;
+
+        while (outstanding_balance > 0) {
+            let interest = outstanding_balance * interest_rate / 100;
+            outstanding_balance += interest;
+            outstanding_balance -= monthly_payment;
+
+            if (outstanding_balance < 0) {
+                outstanding_balance = 0;
+            }
+
+            console.log("Month " + month);
+            console.log("Outstanding Balance: ₹" + outstanding_balance);
+
+            month++;
+        }
+
+        console.log("Loan Fully Repaid");
+        
+        // Task 54. Smart Elevator Simulation: Simulate an elevator operating between floors 0 and 20. Accept floor requests
+        // and display whether the elevator moves up, moves down, or remains at the current floor.
+        let current_floor = 5;
+        let requested_floors = [10, 3, 3, 15, 0, 20];
+
+        let i = 0;
+
+        while (i < requested_floors.length) {
+
+            let requested_floor = requested_floors[i];
+
+            if (requested_floor < 0 || requested_floor > 20) {
+                console.log("Invalid Floor Request");
+            } else if (requested_floor > current_floor) {
+                console.log("Elevator Moving Up: " + current_floor + " to " + requested_floor);
+            } else if (requested_floor < current_floor) {
+                console.log("Elevator Moving Down: " + current_floor + " to " + requested_floor);
+            } else {
+                console.log("Elevator Remains at Floor: " + current_floor);
+            }
+
+            current_floor = requested_floor;
+            i++;
+        }
+        
+        
+        // Task 55. Restaurant Table Allocation: Manage 10 restaurant tables. Accept customer requests, allocate available
+        // tables, reject requests when full, and release tables after checkout.
+        let tables = [];
+
+        for (let i = 0; i < 20; i++) {
+            tables[i] = "Available";
+        }
+
+        let booking_requests = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+        for (let i = 0; i < booking_requests.length; i++) {
+
+            let table_number = booking_requests[i] - 1;
+
+            if (table_number < 0 || table_number >= 10) {
+                console.log("Invalid Table Number: " + booking_requests[i]);
+            } else if (tables[table_number] == "Available") {
+                tables[table_number] = "Occupied";
+                console.log("Table " + booking_requests[i] + " Allocated Successfully");
+            } else {
+                console.log("Table " + booking_requests[i] + " is Already Occupied");
+            }
+        }
+
+        let checkout_tables = [2, 5, 8];
+
+        for (let i = 0; i < checkout_tables.length; i++) {
+
+            let table_number = checkout_tables[i] - 1;
+
+            if (tables[table_number] == "Occupied") {
+                tables[table_number] = "Available";
+                console.log("Table " + checkout_tables[i] + " Released Successfully");
+            } else {
+                console.log("Table " + checkout_tables[i] + " is Already Available");
+            }
+        }
+
+        console.log("Final Restaurant Table Status:");
+
+        for (let i = 0; i < tables.length; i++) {
+            console.log("Table " + (i + 1) + ": " + tables[i]);
+        }
+        
+        
+        // Task 56. Automated Toll Collection: Process multiple vehicles. Calculate toll charges based on vehicle type, FASTag
+        // status, and return-trip eligibility. Generate a final collection report.
+        let vehicle_type = ["Car", "Bike", "Truck", "Car", "Truck"];
+        let fastag_status = ["Yes", "No", "Yes", "No", "Yes"];
+        let return_trip = ["No", "Yes", "No", "Yes", "Yes"];
+
+        let total_collection = 0;
+        let total_vehicles = vehicle_type.length;
+
+        for (let i = 0; i < total_vehicles; i++) {
+
+            let toll = 0;
+
+            if (vehicle_type[i] == "Car") {
+                toll = 100;
+            } else if (vehicle_type[i] == "Bike") {
+                toll = 50;
+            } else if (vehicle_type[i] == "Truck") {
+                toll = 200;
+            }
+
+            if (fastag_status[i] == "Yes") {
+                toll = toll - (toll * 10 / 100);
+            }
+
+            if (return_trip[i] == "Yes") {
+                toll = toll / 2;
+            }
+
+            total_collection = total_collection + toll;
+
+            console.log("Vehicle: " + vehicle_type[i]);
+            console.log("FASTag: " + fastag_status[i]);
+            console.log("Return Trip: " + return_trip[i]);
+            console.log("Toll Charge: ₹" + toll);
+            console.log("----------------------");
+        }
+
+        console.log("FINAL TOLL COLLECTION REPORT");
+        console.log("Total Vehicles: " + total_vehicles);
+        console.log("Total Collection: ₹" + total_collection);
+        
+        
+        // Task 57. Multi-Level Employee Access System: Simulate Admin, Manager, and Employee access levels. Display
+        // different operations based on role and validate access to restricted operations.
+        
+        
+        // Task 58. Warehouse Order Priority System: Process orders based on priority: Emergency first, Express second,
+        // Normal last. Process available orders and stop when the warehouse capacity is exhausted.
+        
+        
+        // Task 59. Bank Fraud Detection Simulation: Process 20 transactions. Flag transactions if they exceed ■50,000, if
+        // multiple transactions occur consecutively above a specified threshold, or if the balance becomes negative. Stop
+        // processing when a critical fraud condition is detected.
+        
+        
+        // Task 60. Hospital Emergency Patient Management: Process incoming patients using emergency levels (Critical, High,
+        // Medium, Low). Allocate available beds, prioritize critical patients, skip invalid patient records, and stop admissions
+        // when all beds are occupied.
+    </script>
+</body>
+</html>

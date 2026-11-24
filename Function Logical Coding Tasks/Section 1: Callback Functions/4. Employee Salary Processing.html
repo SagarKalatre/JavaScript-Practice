@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Salary Processing</title>
+</head>
+<script>
+    // 4. Employee Salary Processing: Create a function CalculateSalary() that accepts basic salary and a
+    // callback. Calculate HRA, DA and total salary. Pass the final salary to the callback.
+
+    function CalculateSalary(basic_salary, callback) {
+        let hra = basic_salary * 20 / 100;
+        let da = basic_salary * 10 / 100;
+        let total_salary = basic_salary + hra + da;
+
+        callback(total_salary);
+    }
+
+    function displaySalary(salary) {
+        console.log("Total Salary: ₹" + salary);
+    }
+    CalculateSalary(30000, displaySalary);
+</script>
+<body>
+    
+</body>
+</html>

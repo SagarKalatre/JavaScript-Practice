@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Transaction</title>
+</head>
+<script>
+    // 3. ATM Transaction: Create a function WithdrawMoney() that accepts an amount and a callback. Check
+    // whether the account balance is sufficient. Execute the callback with the transaction result.
+    let balance = 5000;
+    function WithdrawMoney(accept_amount, callback) {
+        console.log("Withdrow Amount is : " + accept_amount);
+
+        if (accept_amount <= balance) {
+            balance -= accept_amount;
+            callback("Transaction Successful");
+        } else {
+            callback("Insufficient Balance");
+        }
+
+        callback();
+    }
+    function displayAmount(result) {
+        console.log(result);
+        console.log("Remaining Balance : " + balance)
+    }
+    WithdrawMoney(1000, displayAmount)
+</script>
+<body>
+    
+</body>
+</html>

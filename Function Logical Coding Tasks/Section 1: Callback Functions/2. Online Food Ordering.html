@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Food Ordering</title>
+</head>
+<script>
+    // 2. Online Food Ordering: Create a function PlaceOrder() that accepts an order ID and a callback. After placing
+    // the order, call another function to display “Order confirmed”.
+    function PlaceOrder(order_id, callback) {
+        console.log("Order Id : " + order_id);
+        callback();
+    }
+
+    function displayOrder() {
+        console.log("Order Confirmed")
+    }
+    PlaceOrder(12, displayOrder)
+</script>
+<body>
+    
+</body>
+</html>

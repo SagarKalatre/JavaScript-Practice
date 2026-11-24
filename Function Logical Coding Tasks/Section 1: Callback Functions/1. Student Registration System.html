@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration System</title>
+</head>
+<script>
+    // 1. Student Registration System: Create a function RegisterStudent() that accepts a student name and a
+    // callback. After registration, execute the callback to display “Student registered successfully”.
+    function RegisterStudent(stud_name, callback) {
+        console.log("Student Name : " + stud_name)
+        callback();
+    }
+
+    function displayMessage() {
+        console.log("Student registered successfully")
+    }
+
+    RegisterStudent("Sagar", displayMessage)
+    
+</script>
+<body>
+    
+</body>
+</html>

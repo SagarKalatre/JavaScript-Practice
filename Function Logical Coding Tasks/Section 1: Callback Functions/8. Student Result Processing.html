@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result Processingment</title>
+</head>
+<script>
+    // 8. Student Result Processing: Create a function that accepts student marks and a callback. Calculate
+    // percentage, determine grade and pass the result to the callback.
+    function AcceptStudMark(stud_mark, callback) {
+        console.log("Studnet Marks : " + stud_mark)
+        
+        let percentage = stut_mark;
+        
+        if (percentage >= 75) {
+            callback("A Grade");
+        } else if (percentage >= 60) {
+            callback("B Grade");
+        } else if (percentage >= 35) {
+            callback("C Grade");
+        } else if (percentage < 35) {
+            callback("Fail");
+        } else {
+            console.log("Marks is kuch add kar de bhai tere taraf see ")
+        }
+    }
+    function display(result) {
+        console.log("Student Result : " + result);
+    }
+    
+    AcceptStudMark(25, display);
+</script>
+<body>
+    
+</body>
+</html>

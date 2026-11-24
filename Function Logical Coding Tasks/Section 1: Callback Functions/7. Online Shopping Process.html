@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Process</title>
+</head>
+<script>
+    // 7. Online Shopping Process: Create functions for AddToCart(), PlaceOrder(), MakePayment() and
+    // GenerateInvoice(). Execute all operations using callback functions.
+
+    function AddToCart(callback) {
+        console.log("Add to cart successfully");
+        callback();
+    }
+
+    function PlaceOrder(callback) {
+        console.log("Add to cart successfully");
+        callback();
+    }
+
+    function MakePayment(callback) {
+        console.log("Add to cart successfully");
+        callback();
+    }
+
+    function GenerateInvoice() {
+        console.log("Invoice Generate Successfully")
+    }
+
+    AddToCart(function() {
+        PlaceOrder(function() {
+            MakePayment(function() {
+                GenerateInvoice();
+            });
+        });
+    });
+</script>
+<body>
+    
+</body>
+</html>

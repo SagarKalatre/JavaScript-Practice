@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Appointment Systemument</title>
+</head>
+<script>
+    // 6. Hospital Appointment System: Create three functions: BookAppointment(), ConfirmAppointment()
+    // and GenerateReceipt(). Execute them sequentially using nested callbacks.
+
+    function BookAppointment(callback) {
+        console.log("Appointment Booked Successfully");
+        callback();
+    }
+
+    function ConfirmAppointment(callback) {
+        console.log("Appointment Confirm Successfully");
+        callback();
+    }
+    
+    function GenerateReceipt() {
+        console.log("Receipt Generate Successfully");
+    }
+
+    BookAppointment(function()  {
+        ConfirmAppointment(function() {
+            GenerateReceipt();
+        });
+    });
+
+</script>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Authentication</title>
+</head>
+<script>
+    // 5. Login Authentication: Create a function Login() that accepts username, password and a callback. If
+    // credentials are valid, execute the callback to display the dashboard message.
+    let username = "Sagar";
+    let password = "Sagar123";
+    function Login(accept_username, accept_password, callback) {
+        if (username == accept_username && password == accept_password) {
+            callback();
+        } else {
+            console.log("Invalid Username or Password");
+        }
+    }
+
+    function display() {
+        console.log("Welcome to Dashboard");
+    }
+
+    Login("Sagar", "Sagar123", display);
+</script>
+<body>
+    
+</body>
+</html>

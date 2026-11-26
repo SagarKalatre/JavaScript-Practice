@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15. Bank Balance Verification</title>
+</head>
+<script>
+    // 15. Bank Balance Verification: Create a Promise that checks whether the withdrawal amount is less than or
+    // equal to the available balance. Resolve or reject accordingly.
+    let balance = 5000;
+    let amount = 1000;
+    let bank = new Promise(function(resolve, reject) {
+        if (amount <= balance) {
+            resolve("Amount Withdraw Successfully");
+        } else {
+            reject("Amount More Than Available Balance");
+        }
+    });
+
+    bank.then(function(result) {
+        console.log(result);
+    });
+
+    bank.catch(function(error) {
+        console.log(error)
+    });
+</script>
+<body>
+    
+</body>
+</html>

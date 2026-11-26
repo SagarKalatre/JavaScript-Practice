@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16. Product Availability</title>
+</head>
+<script>
+    // 16. Product Availability: Create a Promise that checks product stock. If stock is greater than zero, resolve
+    // “Product Available”; otherwise, reject “Out of Stock”.
+    let product_stock = 10;
+
+    let Product = new Promise(function(resolve, reject) {
+        if (product_stock > 0) {
+            resolve("Product Available")
+        } else {
+            reject("Out of Stock");
+        }
+    });
+
+    Product.then(function(result) {
+        console.log(result);
+    });
+
+    Product.catch(function(error) {
+        console.log(error);
+    });
+
+</script>
+<body>
+
+</body>
+</html>

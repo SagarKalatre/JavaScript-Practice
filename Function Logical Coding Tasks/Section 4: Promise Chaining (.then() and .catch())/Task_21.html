@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21. Student Admission Process</title>
+</head>
+<script>
+    // 21. Student Admission Process: Create separate functions that return Promises to verify student documents,
+    // verify admission fees, allocate student ID and confirm admission. Execute all operations sequentially using
+    // Promise chaining.
+
+    let student_id = 101;
+
+    function verifyDocuments() {
+        return new Promise(function(resolve, reject) {
+            resolve("Student Documents Verified")
+        });
+    }
+
+    function verifyAdmissionFees() {
+        return new Promise(function(resolve, reject) {
+            resolve("Admission Fees Verified")
+        });
+    }
+    function allocateStudentId(student_id) {
+        return new Promise(function(resolve, reject) {
+            resolve("Student ID Allocated: " + student_id)
+        });
+    }
+    function confirmAdmission() {
+        return new Promise(function(resolve, reject) {
+            resolve("Admission Confirmed")
+        });
+    }
+    verifyDocuments()
+        .then(function(result) {
+            console.log(result);
+            return verifyAdmissionFees();
+        })
+        .then(function(result) {
+            console.log(result)
+            return allocateStudentId(student_id);
+        })
+        .then(function(result) {
+            console.log(result)
+            return confirmAdmission();
+        })
+        .then(function(result) {
+            console.log(result)
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+
+</script>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12. Railway Ticket Booking</title>
+</head>
+<script>
+    // 12. Railway Ticket Booking: Display the following messages with a delay of 2 seconds between each operation:
+    // Searching trains; Checking seat availability; Booking ticket; Ticket confirmed.
+    function RailwayTicketBooking() {
+        console.log("Searching trains")
+
+        setTimeout(function() {
+            console.log("Checking seat availability")
+
+            setTimeout(function() {
+                console.log("Booking ticket")
+
+                setTimeout(function() {
+                    console.log("Ticket confirmed")
+                }, 2000)
+            }, 2000)
+        }, 2000)
+    }
+
+    RailwayTicketBooking();
+</script>
+<body>
+    
+</body>
+</html>

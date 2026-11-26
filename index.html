@@ -1,0 +1,1358 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML, CSS & Bootstrap UI Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #eaf0f8;
+            color: #17243a;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .page-wrap {
+            max-width: 1500px;
+            margin: auto;
+            padding: 18px;
+        }
+
+        /* HEADER */
+        .top-banner {
+            min-height: 112px;
+            padding: 12px 20px;
+            border-radius: 18px;
+            color: white;
+            background: linear-gradient(115deg, #06377e, #0755bd, #07377d);
+            display: grid;
+            grid-template-columns: 250px 1fr 250px;
+            align-items: center;
+            gap: 18px;
+            box-shadow: 0 5px 16px #173b6a30;
+        }
+
+        .academy-logo {
+            background: white;
+            color: #12366d;
+            border-radius: 16px;
+            padding: 13px 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-mark {
+            color: #0871c9;
+            font-size: 48px;
+            font-weight: 900;
+            text-shadow: 3px 2px #f5c542;
+        }
+
+        .academy-logo strong {
+            display: block;
+            font-size: 19px;
+            line-height: 1.02;
+            font-weight: 900;
+        }
+
+        .academy-logo small {
+            display: block;
+            text-align: right;
+            font-weight: 700;
+        }
+
+        .main-heading {
+            text-align: center;
+        }
+
+        .main-heading h1 {
+            margin: 0 0 7px;
+            font-size: clamp(23px, 3vw, 39px);
+            font-weight: 900;
+        }
+
+        .subheading {
+            display: inline-block;
+            color: black;
+            background: #ffdc22;
+            border-radius: 30px;
+            padding: 6px 24px;
+            font-size: 23px;
+            font-weight: 900;
+        }
+
+        .tech-stack {
+            background: white;
+            border-radius: 16px;
+            padding: 10px 8px;
+            color: #17243a;
+            display: flex;
+            justify-content: space-around;
+            gap: 8px;
+        }
+
+        .tech {
+            text-align: center;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .tech i {
+            display: block;
+            font-size: 32px;
+        }
+
+        .tech:nth-child(1) i,
+        .tech:nth-child(4) i {
+            color: #7952b3;
+        }
+
+        .tech:nth-child(2) i {
+            color: #1684c7;
+        }
+
+        .tech:nth-child(3) i {
+            color: #e34f26;
+        }
+
+        /* TASK GRID */
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .task-card {
+            overflow: hidden;
+            border-radius: 16px;
+            background: white;
+            border: 1px solid #9db6d8;
+            box-shadow: 0 3px 7px #1d3d6520;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .task-title {
+            background: linear-gradient(90deg, #073b83, #0756ad);
+            color: white;
+            min-height: 42px;
+            padding: 8px 11px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-weight: 800;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .task-number {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: white;
+            color: black;
+            display: inline-grid;
+            place-items: center;
+            font-size: 16px;
+        }
+
+        .mockup {
+            height: 245px;
+            background: #f1f5fb;
+            overflow: hidden;
+            position: relative;
+            font-size: 10px;
+        }
+
+        .task-description {
+            min-height: 58px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 9px 12px;
+            font-size: 14px;
+            font-weight: 700;
+            background: #f8fbff;
+        }
+
+        /* COMMON DASHBOARD */
+        .mini-top {
+            height: 34px;
+            background: #0752a8;
+            color: white;
+            padding: 7px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 800;
+        }
+
+        .mini-layout {
+            display: flex;
+            height: calc(100% - 34px);
+        }
+
+        .mini-side {
+            width: 29%;
+            background: #07449a;
+            color: white;
+            padding: 10px 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            font-size: 9px;
+        }
+
+        .mini-side span {
+            white-space: nowrap;
+        }
+
+        .mini-content {
+            flex: 1;
+            padding: 10px;
+            min-width: 0;
+        }
+
+        .mini-panel {
+            background: white;
+            border: 1px solid #dce5f1;
+            border-radius: 5px;
+            padding: 9px;
+        }
+
+        .mini-label {
+            display: block;
+            font-size: 8px;
+            font-weight: 700;
+            margin: 5px 0 2px;
+        }
+
+        .mini-input {
+            border: 1px solid #d8e0eb;
+            height: 19px;
+            border-radius: 3px;
+            padding: 3px 5px;
+            color: #8491a4;
+            font-size: 8px;
+            width: 100%;
+        }
+
+        .mini-btn {
+            border: 0;
+            background: #0871d7;
+            color: white;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 8px;
+            font-weight: 700;
+        }
+
+        .mini-stat {
+            padding: 10px 4px;
+            text-align: center;
+            border-radius: 5px;
+            color: white;
+            font-weight: 800;
+            font-size: 11px;
+        }
+
+        .mini-stat small {
+            display: block;
+            font-size: 8px;
+        }
+
+        .mini-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 8px;
+            background: white;
+        }
+
+        .mini-table th,
+        .mini-table td {
+            padding: 7px 4px;
+            border-bottom: 1px solid #e5eaf1;
+            text-align: left;
+        }
+
+        .mini-table th {
+            background: #edf3fa;
+        }
+
+        /* TASK 1 */
+        .registration {
+            display: grid;
+            grid-template-columns: 1fr 75px;
+            gap: 7px;
+        }
+
+        .graduation-art {
+            height: 92px;
+            border-radius: 8px;
+            background: #e6f2ff;
+            display: grid;
+            place-items: center;
+            color: #1265ba;
+            font-size: 38px;
+            margin-top: 20px;
+        }
+
+        /* TASK 2 */
+        .shop-top {
+            height: 38px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 5px;
+        }
+
+        .search-mini {
+            width: 45%;
+            border: 1px solid #dce4ee;
+            border-radius: 10px;
+            padding: 4px 8px;
+            color: #8b98aa;
+        }
+
+        .shop-layout {
+            display: flex;
+            height: calc(100% - 38px);
+        }
+
+        .shop-categories {
+            width: 29%;
+            padding: 10px 7px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 9px;
+        }
+
+        .product-grid {
+            flex: 1;
+            padding: 8px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .product {
+            background: white;
+            border: 1px solid #e0e7f0;
+            border-radius: 5px;
+            padding: 5px 3px;
+            text-align: center;
+        }
+
+        .product i {
+            font-size: 30px;
+            display: block;
+            margin: 13px 0 5px;
+        }
+
+        .product strong {
+            display: block;
+            font-size: 8px;
+        }
+
+        .product small {
+            color: #df9b00;
+        }
+
+        /* TASK 3 */
+        .employee-content {
+            padding: 10px;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 7px;
+            margin-bottom: 12px;
+        }
+
+        .employee-photo {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #d9e9fa;
+            display: inline-grid;
+            place-items: center;
+        }
+
+        /* TASK 4 */
+        .restaurant-hero {
+            height: 145px;
+            padding: 17px 12px;
+            color: white;
+            background:
+                linear-gradient(90deg, #111c24e8, #111c2430),
+                url('https://images.unsplash.com/photo-1547592180-85f173990554?w=900') center/cover;
+        }
+
+        .restaurant-nav {
+            display: flex;
+            justify-content: space-between;
+            font-size: 8px;
+            margin-bottom: 22px;
+        }
+
+        .restaurant-hero h3 {
+            font-size: 19px;
+            font-weight: 900;
+            width: 58%;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            padding: 7px;
+        }
+
+        .food {
+            height: 49px;
+            border-radius: 5px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .food:nth-child(1) {
+            background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200');
+        }
+
+        .food:nth-child(2) {
+            background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58bd?w=200');
+        }
+
+        .food:nth-child(3) {
+            background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200');
+        }
+
+        .food:nth-child(4) {
+            background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200');
+        }
+
+        /* TASK 5 */
+        .result-head {
+            background: #0752a8;
+            color: white;
+            padding: 10px;
+            font-weight: 900;
+        }
+
+        .student-info {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px;
+            background: white;
+        }
+
+        .student-face {
+            width: 53px;
+            height: 53px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: #d7e7f7;
+            font-size: 26px;
+        }
+
+        .pass-tag {
+            margin-left: auto;
+            background: #159b61;
+            color: white;
+            padding: 7px 10px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .result-summary {
+            display: flex;
+            justify-content: space-between;
+            background: #d9efff;
+            padding: 8px;
+            margin-top: 8px;
+            font-weight: 800;
+        }
+
+        /* TASK 6 */
+        .portfolio {
+            height: 100%;
+            color: white;
+            padding: 12px;
+            background:
+                linear-gradient(90deg, #101827f5, #1018279c),
+                url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=700') center/cover;
+        }
+
+        .portfolio-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 13px;
+            font-size: 8px;
+        }
+
+        .portfolio h2 {
+            font-size: 21px;
+            line-height: 1.1;
+            margin-top: 26px;
+            font-weight: 900;
+        }
+
+        .portfolio p {
+            font-size: 10px;
+        }
+
+        .skill-line {
+            height: 5px;
+            background: #dce7f5;
+            border-radius: 5px;
+            margin: 7px 0;
+            overflow: hidden;
+        }
+
+        .skill-line span {
+            display: block;
+            height: 100%;
+            background: #1684e9;
+        }
+
+        /* TASK 7 */
+        .learning-content {
+            padding: 10px;
+        }
+
+        .course-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .course-mini {
+            background: white;
+            border: 1px solid #dce5f1;
+            border-radius: 6px;
+            text-align: center;
+            padding: 9px 5px;
+        }
+
+        .course-mini i {
+            font-size: 29px;
+            display: block;
+        }
+
+        .course-mini strong {
+            font-size: 10px;
+        }
+
+        /* TASK 8 */
+        .kiran-nav {
+            height: 34px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            font-size: 7px;
+            font-weight: 700;
+        }
+
+        .kiran-hero {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f3f7fc;
+        }
+
+        .kiran-copy {
+            width: 58%;
+        }
+
+        .kiran-copy h3 {
+            font-size: 19px;
+            line-height: 1.12;
+            font-weight: 900;
+            color: #12233e;
+        }
+
+        .kiran-copy p {
+            font-size: 8px;
+        }
+
+        .kiran-person {
+            width: 42%;
+            height: 140px;
+            object-fit: cover;
+            object-position: center top;
+            align-self: end;
+        }
+
+        .feature-strip {
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 3px;
+            background: white;
+            color: #0752a8;
+            font-size: 8px;
+            font-weight: 700;
+        }
+
+        /* FOOTER */
+        .bottom-ribbon {
+            margin-top: 16px;
+            min-height: 40px;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #c9e0ff, #e9f3ff, #c5ddff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 800;
+            padding: 7px 12px;
+        }
+
+        .check {
+            color: #13a05b;
+            font-size: 24px;
+        }
+
+        .happy {
+            margin-left: auto;
+            background: #0752a8;
+            color: white;
+            border-radius: 22px;
+            padding: 5px 15px;
+            white-space: nowrap;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1050px) {
+            .top-banner {
+                grid-template-columns: 200px 1fr;
+            }
+
+            .tech-stack {
+                grid-column: 1 / -1;
+                justify-self: center;
+                width: 250px;
+            }
+
+            .tasks-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .page-wrap {
+                padding: 8px;
+            }
+
+            .top-banner {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 12px;
+            }
+
+            .academy-logo {
+                justify-content: center;
+            }
+
+            .tech-stack {
+                grid-column: auto;
+            }
+
+            .tasks-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .mockup {
+                height: 260px;
+            }
+
+            .bottom-ribbon {
+                flex-wrap: wrap;
+                font-size: 12px;
+            }
+
+            .happy {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="page-wrap">
+
+        <!-- HEADER -->
+        <header class="top-banner">
+
+            <div class="academy-logo">
+                <div class="logo-mark">K</div>
+                <div>
+                    <strong>THE<br>KIRAN ACADEMY</strong>
+                    <small>PUNE</small>
+                </div>
+            </div>
+
+            <div class="main-heading">
+                <h1>HTML, CSS &amp; Bootstrap</h1>
+                <div class="subheading">8 UI Development Practice Tasks</div>
+            </div>
+
+            <div class="tech-stack">
+                <div class="tech">
+                    <i class="bi bi-bootstrap-fill"></i>
+                    Bootstrap 5
+                </div>
+
+                <div class="tech">
+                    <i class="bi bi-filetype-css"></i>
+                    CSS3
+                </div>
+
+                <div class="tech">
+                    <i class="bi bi-filetype-html"></i>
+                    HTML5
+                </div>
+
+                <div class="tech">
+                    <i class="bi bi-bootstrap"></i>
+                    Bootstrap Icons
+                </div>
+            </div>
+
+        </header>
+
+        <!-- ALL 8 TASKS -->
+        <section class="tasks-grid">
+
+            <!-- TASK 1 -->
+            <article class="task-card">
+
+                <div class="task-title">
+                    <span class="task-number">1</span>
+                    Student Registration Dashboard
+                </div>
+
+                <div class="mockup">
+
+                    <div class="mini-top">
+                        <span><i class="bi bi-mortarboard-fill"></i> THE KIRAN ACADEMY</span>
+                        <span><i class="bi bi-person-circle"></i> Student</span>
+                    </div>
+
+                    <div class="mini-layout">
+
+                        <aside class="mini-side">
+                            <span><i class="bi bi-house-door"></i> Dashboard</span>
+                            <span><i class="bi bi-people"></i> Students</span>
+                            <span><i class="bi bi-book"></i> Courses</span>
+                            <span><i class="bi bi-bar-chart"></i> Reports</span>
+                        </aside>
+
+                        <div class="mini-content">
+
+                            <div class="mini-panel">
+
+                                <strong>Student Registration Form</strong>
+
+                                <div class="registration">
+
+                                    <div>
+                                        <label class="mini-label">Student Name</label>
+                                        <div class="mini-input">Enter name</div>
+
+                                        <label class="mini-label">Email</label>
+                                        <div class="mini-input">Enter email</div>
+
+                                        <label class="mini-label">Mobile Number</label>
+                                        <div class="mini-input">Enter mobile number</div>
+
+                                        <label class="mini-label">Gender</label>
+                                        <div>◯ Male &nbsp; ◯ Female</div>
+
+                                        <div class="mt-2">
+                                            <button class="mini-btn">Submit</button>
+                                            <button class="mini-btn">Reset</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="graduation-art">
+                                        <i class="bi bi-mortarboard-fill"></i>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task-description">
+                    Create a student registration<br>
+                    form with sidebar and navbar.
+                </div>
+
+            </article>
+
+            <!-- TASK 2 -->
+            <article class="task-card">
+
+                <div class="task-title">
+                    <span class="task-number">2</span>
+                    Online Shopping Page
+                </div>
+
+                <div class="mockup">
+
+                    <div class="shop-top">
+                        <strong><i class="bi bi-cart-fill text-primary"></i> ShopKart</strong>
+
+                        <span class="search-mini">
+                            Search products...
+                            <i class="bi bi-search float-end"></i>
+                        </span>
+
+                        <i class="bi bi-cart3 fs-6"></i>
+                    </div>
+
+                    <div class="shop-layout">
+
+                        <div class="shop-categories">
+                            <strong>Categories</strong>
+                            <span><i class="bi bi-phone"></i> Mobiles</span>
+                            <span><i class="bi bi-laptop"></i> Laptops</span>
+                            <span><i class="bi bi-headphones"></i> Accessories</span>
+                            <span><i class="bi bi-bag"></i> Fashion</span>
+                            <span><i class="bi bi-house"></i> Home &amp; Living</span>
+                        </div>
+
+                        <div class="product-grid">
+
+                            <div class="product">
+                                <span class="badge bg-danger">20% OFF</span>
+                                <i class="bi bi-phone"></i>
+                                <strong>Smartphone</strong>
+                                <strong>₹14,999</strong>
+                                <small>★★★★★</small>
+                                <button class="mini-btn d-block mx-auto mt-1">Add to Cart</button>
+                            </div>
+
+                            <div class="product">
+                                <i class="bi bi-headphones"></i>
+                                <strong>Headphones</strong>
+                                <strong>₹2,999</strong>
+                                <small>★★★★★</small>
+                                <button class="mini-btn d-block mx-auto mt-1">Add to Cart</button>
+                            </div>
+
+                            <div class="product">
+                                <i class="bi bi-smartwatch"></i>
+                                <strong>Smart Watch</strong>
+                                <strong>₹4,999</strong>
+                                <small>★★★★☆</small>
+                                <button class="mini-btn d-block mx-auto mt-1">Add to Cart</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task-description">
+                    Create a product listing page<br>
+                    with category sidebar.
+                </div>
+
+            </article>
+
+            <!-- TASK 3 -->
+            <article class="task-card">
+
+                <div class="task-title">
+                    <span class="task-number">3</span>
+                    Employee Dashboard
+                </div>
+
+                <div class="mockup">
+
+                    <div class="mini-top">
+                        <span><i class="bi bi-building"></i> Kiran Academy</span>
+                    </div>
+
+                    <div class="mini-layout">
+
+                        <aside class="mini-side">
+                            <span><i class="bi bi-house"></i> Dashboard</span>
+                            <span><i class="bi bi-people"></i> Employees</span>
+                            <span><i class="bi bi-diagram-3"></i> Departments</span>
+                            <span><i class="bi bi-bar-chart"></i> Reports</span>
+                        </aside>
+
+                        <div class="mini-content employee-content">
+
+                            <div class="stats-row">
+                                <div class="mini-stat" style="background:#28a9e8">
+                                    120
+                                    <small>Total</small>
+                                </div>
+
+                                <div class="mini-stat" style="background:#20a36d">
+                                    100
+                                    <small>Active</small>
+                                </div>
+
+                                <div class="mini-stat" style="background:#ed4e55">
+                                    20
+                                    <small>Inactive</small>
+                                </div>
+                            </div>
+
+                            <strong>Employee List</strong>
+
+                            <table class="mini-table mt-2">
+                                <thead>
+                                    <tr>
+                                        <th>Photo</th>
+                                        <th>Name</th>
+                                        <th>Department</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td><span class="employee-photo"><i class="bi bi-person-fill"></i></span></td>
+                                        <td>Rohit Sharma</td>
+                                        <td>IT</td>
+                                        <td><i class="bi bi-pencil-square text-primary"></i> <i class="bi bi-trash text-danger"></i></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><span class="employee-photo"><i class="bi bi-person-fill"></i></span></td>
+                                        <td>Neha Patil</td>
+                                        <td>HR</td>
+                                        <td><i class="bi bi-pencil-square text-primary"></i> <i class="bi bi-trash text-danger"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task-description">
+                    Build an employee management<br>
+                    dashboard.
+                </div>
+
+            </article>
+
+            <!-- TASK 4 -->
+            <article class="task-card">
+
+                <div class="task-title">
+                    <span class="task-number">4</span>
+                    Restaurant Website
+                </div>
+
+                <div class="mockup">
+
+                    <div class="restaurant-hero">
+
+                        <div class="restaurant-nav">
+                            <strong>Foodie</strong>
+                            <span>Home &nbsp; Menu &nbsp; About &nbsp; Contact</span>
+                        </div>
+
+                        <h3>Delicious Food<br>For Everyone</h3>
+
+                        <p>Good Food · Good Mood</p>
+
+                        <button class="mini-btn" style="background:#ffc107;color:#222">
+                            View Menu
+                        </button>
+
+                        <button class="mini-btn">
+                            Book Table
+                        </button>
+
+                    </div>
+
+                    <div class="text-center fw-bold pt-1">
+                        Our Menu
+                    </div>
+
+                    <div class="food-grid">
+                        <div class="food"></div>
+                        <div class="food"></div>
+                        <div class="food"></div>
+                        <div class="food"></div>
+                    </div>
+
+                </div>
+
+                <div class="task-description">
+                    Design a restaurant landing page.
+                </div>
+
+            </article>
+
+            <!-- TASK 5 -->
+            <article class="task-card">
+
+                <div class="task-title">
+                    <span class="task-number">5</span>
+                    Student Result Page
+                </div>
+
+                <div class="mockup">
+
+                    <div class="result-head">
+                        THE KIRAN ACADEMY
+                    </div>
+
+                    <div class="student-info">
+
+                        <div class="student-face">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+
+                        <div>
+                            <strong>Sneha Deshmukh</strong>
+                            <br>
+                            Roll No: ST101
+                            <br>
+                            Batch: BCA
+                        </div>
+
+                        <span class="pass-tag">Pass</span>
+
+                    </div>
+
+                    <div class="p-2">
+
+                        <table class="mini-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Max Marks</th>
+                                    <th>Obtained</th>
+                                    <th>Grade</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>Python</td>
+                                    <td>100</td>
+                                    <td>92</td>
+                                    <td>A</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Java</td>
+                                    <td>100</td>
+                                    <td>88</td>
+                                    <td>A</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Web Tech</td>
+                                    <td>100</td>
+                                    <td>90</td>
+                                    <td>A+</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="result-summary">
+                            <span>Total: 270/300</span>
+                            <span>Percentage: 90%</span>
+                        </div>
+
+                        <div class="text-end mt-2">
+                            <button class="mini-btn">
+                                <i class="bi bi-download"></i> Download
+                            </button>
+
+                            <button class="mini-btn">
+                                <i class="bi bi-printer"></i> Print
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="task-description">
+                    Show student marksheet with<br>
+                    pass/fail status.
+                </div>
+
+            </article>
+
+            <!-- TASK 6 -->
+            <article class="task-card">
+
+                <div class="task-title">
+                    <span class="task-number">6</span>
+                    Personal Portfolio
+                </div>
+
+                <div class="mockup">
+
+                    <div class="portfolio">
+
+                        <div class="portfolio-nav">
+                            <span>Portfolio</span>
+                            <span>About</span>
+                            <span>Skills</span>
+                            <span>Projects</span>
+                            <span>Contact</span>
+                        </div>
+
+                        <h2>
+                            Hi, I'm
+                            <br>
+                            Python Developer
+                        </h2>
+
+                        <p>Build. Learn. Grow.</p>
+
+                        <button class="mini-btn" style="background:#7645cf">
+                            Contact Me
+                        </button>
+
+                        <div style="position:absolute;bottom:10px;left:12px;right:12px;background:#111827d9;padding:8px;border-radius:5px">
+
+                            <strong>My Skills</strong>
+
+                            <div class="d-flex justify-content-between mt-1">
+                                <span>Python</span>
+                                <span>90%</span>
+                            </div>
+
+                            <div class="skill-line">
+                                <span style="width:90%"></span>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <span>Web Development</span>
+                                <span>85%</span>
+                            </div>
+
+                            <div class="skill-line">
+                                <span style="width:85%"></span>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <span>Data Science</span>
+                                <span>80%</span>
+                            </div>
+
+                            <div class="skill-line">
+                                <span style="width:80%"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="task-description">
+                    Create a personal portfolio<br>
+                    website.
+                </div>
+
+            </article>
+
+            <!-- TASK 7 -->
+            <article class="task-card">
+
+                <div class="task-title">
+                    <span class="task-number">7</span>
+                    Online Learning Platform
+                </div>
+
+                <div class="mockup">
+
+                    <div class="mini-top">
+                        <span>Kiran Learning</span>
+                        <i class="bi bi-person-circle fs-6"></i>
+                    </div>
+
+                    <div class="mini-layout">
+
+                        <aside class="mini-side">
+                            <span><i class="bi bi-house"></i> Dashboard</span>
+                            <span><i class="bi bi-journal-bookmark"></i> My Courses</span>
+                            <span><i class="bi bi-clipboard-check"></i> Assignments</span>
+                            <span><i class="bi bi-award"></i> Certificates</span>
+                        </aside>
+
+                        <div class="mini-content learning-content">
+
+                            <strong>My Courses</strong>
+
+                            <div class="course-mini-grid mt-2">
+
+                                <div class="course-mini">
+                                    <i class="bi bi-filetype-py text-info"></i>
+                                    <strong>Python</strong>
+                                    <div class="text-muted">5.0 hours</div>
+                                    <button class="mini-btn mt-1">Continue →</button>
+                                </div>
+
+                                <div class="course-mini">
+                                    <i class="bi bi-filetype-java text-danger"></i>
+                                    <strong>Java</strong>
+                                    <div class="text-muted">6.0 hours</div>
+                                    <button class="mini-btn mt-1">Continue →</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task-description">
+                    Build an online learning platform.
+                </div>
+
+            </article>
+
+            <!-- TASK 8 -->
+            <article class="task-card">
+
+                <div class="task-title">
+                    <span class="task-number">8</span>
+                    The Kiran Academy Website
+                </div>
+
+                <div class="mockup">
+
+                    <div class="kiran-nav">
+                        <strong>THE KIRAN ACADEMY</strong>
+                        <span>Courses</span>
+                        <span>Placements</span>
+                        <span>About</span>
+                        <span>Contact</span>
+                        <button class="mini-btn" style="background:#e34850">
+                            Book Free Demo
+                        </button>
+                    </div>
+
+                    <div class="kiran-hero">
+
+                        <div class="kiran-copy">
+
+                            <h3>
+                                Build Practical
+                                <br>
+                                Software Skills
+                                <br>
+                                in Pune &amp; Online
+                            </h3>
+
+                            <p>Learn · Practice · Get Placed</p>
+
+                            <button class="mini-btn" style="background:#e34850">
+                                Book Free Demo
+                            </button>
+
+                            <button class="mini-btn" style="background:white;color:#17416e">
+                                Explore Courses
+                            </button>
+
+                        </div>
+
+                        <img
+                            class="kiran-person"
+                            src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400"
+                            alt="Student learning"
+                        >
+
+                    </div>
+
+                    <div class="feature-strip">
+                        <span><i class="bi bi-people"></i> Industry<br>Expert Trainers</span>
+                        <span><i class="bi bi-laptop"></i> Real-Time<br>Projects</span>
+                        <span><i class="bi bi-person-check"></i> Placement<br>Support</span>
+                    </div>
+
+                </div>
+
+                <div class="task-description">
+                    Recreate the official website<br>
+                    design of The Kiran Academy.
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bottom-ribbon">
+
+            <i class="bi bi-check-circle-fill check"></i>
+
+            <span>
+                Practice these 8 tasks to master HTML, CSS and Bootstrap with real-world UI designs!
+            </span>
+
+            <span class="happy">
+                Happy Coding!
+                <i class="bi bi-emoji-smile-fill text-warning"></i>
+            </span>
+
+        </footer>
+
+    </main>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Highlight task card when clicking on its heading
+
+        document.querySelectorAll(".task-title").forEach(function (heading) {
+
+            heading.addEventListener("click", function () {
+
+                const card = heading.closest(".task-card");
+
+                card.classList.toggle("selected");
+
+                card.style.outline = card.classList.contains("selected")
+                    ? "3px solid #ffca28"
+                    : "none";
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20. Payment Gateway</title>
+</head>
+<script>
+    // 20. Payment Gateway: Create a Promise that accepts an amount and payment status. Resolve when payment is
+    // successful; otherwise, reject with “Payment Failed”.
+    let amount = 1200;
+    let status = true;
+
+    let PaymentGetway = new Promise(function(resolve, reject) {
+        if (status == true) {
+            resolve("Payment Successful : ₹" + amount);
+        } else {
+            reject("Payment Failed");
+        }
+    });
+
+    PaymentGetway.then(function(result) {
+        console.log(result);
+    });
+
+    PaymentGetway.catch(function(error) {
+        console.log(error);
+    });
+</script>
+<body>
+    
+</body>
+</html>

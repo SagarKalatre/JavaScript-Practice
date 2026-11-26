@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19. File Upload Simulation</title>
+</head>
+<script>
+    // 19. File Upload Simulation: Create a Promise that simulates file uploading with a 5-second delay. Resolve when
+    // uploading is successful and reject when uploading fails.
+    let fileUp = true;
+
+    let FileUpSim = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            if (fileUp == true) {
+                resolve("File Uploaded Successfully") 
+            } else {
+                reject("File Upload Failed")
+            }
+        }, 5000)
+    })
+
+    FileUpSim.then(function(result) {
+        console.log(result);
+    });
+
+    FileUpSim.catch(function(error) {
+        console.log(error);
+    });
+
+    FileUpSim.catch
+
+</script>
+<body>
+    
+</body>
+</html>

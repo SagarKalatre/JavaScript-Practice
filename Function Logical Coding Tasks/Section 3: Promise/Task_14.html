@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14. Employee Data Validation</title>
+</head>
+<script>
+    // 14. Employee Data Validation: Create a Promise that accepts employee ID. If the ID is available, resolve
+    // “Employee Found”; otherwise, reject “Employee Not Found”.
+    let employee_id = 101;
+    let employee = new Promise(function(resolve, reject) {
+        if (employee_id == 101) {
+            resolve("“Employee Found")
+        } else {
+            reject("Employee Not Found");
+        }
+    });
+
+    employee.then(function(result) {
+        console.log(result)
+    });
+
+    employee.catch(function(error) {
+        console.log(error)
+    });
+
+</script>
+<body>
+    
+</body>
+</html>

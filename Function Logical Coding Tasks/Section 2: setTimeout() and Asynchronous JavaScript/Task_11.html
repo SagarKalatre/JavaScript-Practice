@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11. OTP Verification</title>
+</head>
+<script>
+// 11. OTP Verification: Generate a random 6-digit OTP. Display the OTP after 3 seconds and verify the entered OTP.
+
+    let otp = Math.floor(100000 + Math.random() * 900000);
+    let entered_otp = 123456;
+
+    function OTPVerfication() {
+        console.log("Generated OTP: " + otp);
+
+        if (entered_otp == otp) {
+            console.log("OTP Verfication uccessfully...!");
+        } else {
+            console.log("Invalid OTP")
+        }
+    }
+
+    setTimeout(OTPVerfication, 3000);
+</script>
+<body>
+    
+</body>
+</html>

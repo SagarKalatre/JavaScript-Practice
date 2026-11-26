@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18. Exam Result Declaration</title>
+</head>
+<script>
+    // 18. Exam Result Declaration: Create a Promise that accepts student marks. If marks are 40 or above, resolve
+    // “Pass”; otherwise, reject “Fail”
+    let marks = 100;
+
+    let ResultDecl = new Promise(function(resolve, reject) {
+        if (marks >= 40) {
+            resolve("Pass")
+        } else {
+            reject("Fail")
+        }
+    });
+
+    ResultDecl.then(function(result) {
+        console.log(result);
+    });
+
+    ResultDecl.catch(function(error) {
+        console.log(error);
+    });
+
+</script>
+<body>
+    
+</body>
+</html>

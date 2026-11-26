@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10. Traffic Signal Simulation</title>
+</head>
+<script>
+
+    // 10. Traffic Signal Simulation: Display Red for 5 seconds, Yellow for 2 seconds and Green for 5 seconds using
+    // setTimeout().
+    let Red = 5000;
+    let Yellow = 2000; 
+    let Green = 5000;
+
+    function SignalTimer() {
+        console.log("Red");
+
+        setTimeout(function() {
+            console.log("Yellow");
+
+            setTimeout(function() {
+                console.log("Green");
+            }, Yellow);
+        }, Red);
+    }
+    
+    SignalTimer();
+</script>
+<body>
+    
+</body>
+</html>

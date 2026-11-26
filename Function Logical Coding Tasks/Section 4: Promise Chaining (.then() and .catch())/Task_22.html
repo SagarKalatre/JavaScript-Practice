@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22. Online Shopping Workflow</title>
+</head>
+<script>
+    // 22. Online Shopping Workflow: Create Promise-based functions to check product availability, add product to
+    // cart, process payment and generate order ID. Use .then() and .catch() to manage the complete process.
+
+    let order_id = 101;
+
+    function checkProductAvailability() {
+        return new Promise(function(resolve, reject) {
+            resolve("Product is Available");
+        });
+    }
+
+    function addProductToCart() {
+        return new Promise(function(resolve, reject) {
+            resolve("Product Added to Cart");
+        });
+    }
+
+    function processPayment() {
+        return new Promise(function(resolve, reject) {
+            resolve("Payment Processed Successfully");
+        });
+    }
+
+    function generateOrderId(order_id) {
+        return new Promise(function(resolve, reject) {
+            resolve("Generated Order ID : " + order_id)
+        })
+    }
+
+    function orderPlaced() {
+        return new Promise(function(resolve, reject) {
+            resolve("Order Placed Successfully");
+        })
+    }
+
+    checkProductAvailability()
+        .then(function(result) {
+            console.log(result);
+            return addProductToCart();
+        })
+        .then(function(result) {
+            console.log(result)
+            return processPayment();
+        })
+        .then(function(result) {
+            console.log(result)
+            return generateOrderId(order_id);
+        })
+        .then(function(result) {
+            console.log(result);
+            return orderPlaced();
+        })
+        .then(function(result) {
+            console.log(result)
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+
+</script>
+<body>
+    
+</body>
+</html>

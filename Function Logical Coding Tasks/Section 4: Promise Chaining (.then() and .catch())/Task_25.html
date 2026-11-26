@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25. Library Management System</title>
+</head>
+<script>
+    // 25. Library Management System: Create Promise-based functions to check book availability, issue a book,
+    // update the database and generate an issue receipt. Execute all operations sequentially.
+    let book_name = "Java Programming";
+    let student_name = "Sagar";
+    let available_books = 5;
+    let issue_id = 101;
+
+    function checkBookAvailability() {
+        return new Promise(function (resolve, reject) {
+            if (available_books > 0) {
+                resolve("Book Is Available");
+            } else {
+                reject("Book Is Not available");
+            }
+        });
+    }
+
+    function issueBook() {
+        return new Promise(function (resolve, reject) {
+            if (available_books > 0) {
+                available_books--;
+                resolve("Book Issued Successfully");
+            } else {
+                reject("Book Issue Failed");
+            }
+        });
+    }
+
+    function updateLibraryDatabase() {
+        return new Promise(function (resolve, reject) {
+            if (available_books >= 0) {
+                resolve("Library Database Updated Successfully");
+            } else {
+                reject("Database Update Failed");
+            }
+        });
+    }
+
+    function generateIssueReceipt() {
+        return new Promise(function(resolve, reject) {
+            if (issue_id > 0) {
+                resolve(
+                    "Issue Receipt Generated Successfully\n" +
+                    "Issue ID : " + issue_id + "\n" +
+                    "Book Name : " + book_name + "\n" +
+                    "Student Name : " + student_name
+                );
+            } else {
+                reject("Receipt Generation Failed");
+            }
+        });
+    }
+
+    checkBookAvailability() 
+        .then(function(result) {
+            console.log(result);
+            return issueBook()
+        })
+        .then(function(result) {
+            console.log(result);
+            return updateLibraryDatabase();
+        })
+        .then(function(result) {
+            console.log(result);
+            return generateIssueReceipt();
+        })
+        .then(function(result) {
+            console.log(result);
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+
+
+</script>
+
+<body>
+
+</body>
+
+</html>

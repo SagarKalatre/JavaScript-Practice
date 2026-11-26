@@ -6,24 +6,92 @@
     <title>Document</title>
 </head>
 <script>
-    // 9. Digital Countdown: Display numbers from 10 to 1 with a delay of one second between each number. Display
-    // “Happy New Year” after the countdown.
+    // // 9. Digital Countdown: Display numbers from 10 to 1 with a delay of one second between each number. Display
+    // // “Happy New Year” after the countdown.
+    // let countdown = 10;
+    // function NewYearCountDown() {
+    //     console.log(countdown);
+    //     countdown--;
+
+    //     if (countdown == 0) {
+    //         clearInterval(timer);
+    //         console.log("Happy New Year")
+    //     }
+    // }
+    // let timer = setInterval(NewYearCountDown, 1000);
 
 
-    // 10. Traffic Signal Simulation: Display Red for 5 seconds, Yellow for 2 seconds and Green for 5 seconds using
-    // setTimeout().
+    // // 10. Traffic Signal Simulation: Display Red for 5 seconds, Yellow for 2 seconds and Green for 5 seconds using
+    // // setTimeout().
+    // let Red = 5000;
+    // let Yellow = 2000; 
+    // let Green = 5000;
+
+    // function SignalTimer() {
+    //     console.log("Red");
+
+    //     setTimeout(function() {
+    //         console.log("Yellow");
+
+    //         setTimeout(function() {
+    //             console.log("Green");
+    //         }, Yellow);
+    //     }, Red);
+    // }
+    
+    // SignalTimer();
 
 
-    // 11. OTP Verification: Generate a random 6-digit OTP. Display the OTP after 3 seconds and verify the entered
-    // OTP.
+    // // 11. OTP Verification: Generate a random 6-digit OTP. Display the OTP after 3 seconds and verify the entered
+    // // OTP.
+    // let otp = Math.floor(100000 + Math.random() * 900000);
+    // let entered_otp = 123456;
+
+    // function OTPVerfication() {
+    //     console.log("Generated OTP: " + otp);
+
+    //     if (entered_otp == otp) {
+    //         console.log("OTP Verfication uccessfully...!");
+    //     } else {
+    //         console.log("Invalid OTP")
+    //     }
+    // }
+
+    // setTimeout(OTPVerfication, 3000);
 
 
     // 12. Railway Ticket Booking: Display the following messages with a delay of 2 seconds between each operation:
     // Searching trains; Checking seat availability; Booking ticket; Ticket confirmed.
+    function RailwayBooking() {
+        console.log("Searching Trains")
+        setTimeout(function() {
+            console.log("Check seat Availability")
 
+            setTimeout(function() {
+                console.log("Booking ticket")
+
+                setTimeout(function() {
+                    console.log("Ticket confirmed.")
+                }, 2000)
+            }, 2000)
+        }, 2000)
+    }    
+    
+    RailwayBooking();
+    
 
     // 13. Automatic Logout: Create a login simulation. If the user does not perform any activity for 10 seconds, display
     // “Session Expired”.
+    function Login() {
+        console.log("User Logged In")
+
+        setTimeout(function() {
+            console.log("Session Expired")
+        }, 10000)
+    }
+
+    Login();
+
 </script>
 <body>
     

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17. Internet Connection Checker</title>
+</head>
+<script>
+    // 17. Internet Connection Checker: Create a Promise that checks an internet connection using a Boolean variable.
+    // Resolve when connected and reject when disconnected.
+    let check = true;
+
+    let InternetConnection = new Promise(function(resolve, reject) {
+        if (check == true) {
+            resolve("Connection Connected")
+        } else {
+            reject("Connection not Connected");
+        }
+    });
+
+    InternetConnection.then(function(result) {
+        console.log(result);
+    });
+
+    InternetConnection.catch(function(error) {
+        console.log(error);
+    });
+
+</script>
+<body>
+    
+</body>
+</html>

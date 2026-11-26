@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23. Employee Attendance System</title>
+</head>
+<script>
+    // 23. Employee Attendance System: Create a Promise that checks employee attendance. If attendance is
+    // available, calculate working hours using another Promise and finally generate an attendance report.
+    let employee_name = "Sagar";
+    let check_in = 9;
+    let check_out = 18;
+
+    function checkEmployeeAttendance(Employee_Attendance) {
+        return new Promise(function(resolve, reject) {
+            if (Employee_Attendance == true) {
+                resolve("Employee Attendance : Present");
+            } else {
+                reject("Employee Attendance : Absent");
+            }
+        });
+    }
+
+    function calculateWorkingHours() {
+        return new Promise(function(resolve, reject) {
+            let working_houes = check_out - check_in;
+            resolve("Working Hours : " + working_houes);
+        });
+    }
+
+    function generateAttendanceReport() {
+        return new Promise(function(resolve, reject) {
+            resolve("Attendance Report Generated Successfully");
+        })
+    }
+
+    checkEmployeeAttendance(true) 
+        .then(function(result) {
+            console.log(result);
+            return calculateWorkingHours();
+        })
+        .then(function(result) {
+            console.log(result);
+            return generateAttendanceReport();
+        })
+        .then(function(result) {
+            console.log(result);
+        })
+        .catch(function(error) {
+            console.log(error)
+        });
+
+
+</script>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24. Movie Ticket Booking</title>
+</head>
+<script>
+    // 24. Movie Ticket Booking: Create a Promise-based application that checks seat availability, reserves seats,
+    // processes payment and generates a ticket. Handle errors at every stage.
+    let movie_name = "Avengers";
+    let total_seats = 100;
+    let booked_seats = 80;
+    let requested_seats = 2;
+    let ticket_id = 101;
+    let ticket_price = 200;
+
+    function checkSeatAvailability() {
+        return new Promise(function(resolve, reject) {
+            let seat_av = total_seats - booked_seats;
+
+            if (seat_av >= requested_seats) {
+                resolve("Seats Available : " + seat_av);
+            } else {
+                reject("Seats No Available...!")
+            }
+        });
+    }
+
+    function reserveSeats() {
+        return new Promise(function(resolve, reject) {
+            if (requested_seats > 0) {
+                booked_seats += requested_seats;
+                resolve(requested_seats + " Seats Reserved Successfully")
+            } else {
+                reject("Invalid Seat Request");
+            }
+        });
+    }
+
+    function processPayment() {
+        return new Promise(function(resolve, reject) {
+            if (ticket_price > 0) {
+                resolve("Payment Processed: Rs. " + ticket_price * requested_seats);
+            } else {
+                reject("Payment Failed")
+            }
+        });
+    }
+
+    function generateTicket() {
+        return new Promise(function(resolve, reject) {
+            if (ticket_id > 0) {
+                resolve("Movie Ticket Generated Successfully. Ticket ID : " + ticket_id);
+            } else {
+                reject("Ticket Generation Failed")
+            }
+        });
+    }
+
+    checkSeatAvailability() 
+        .then(function(result) {
+            console.log(result);
+            return reserveSeats();
+        })
+        .then(function(result) {
+            console.log(result);
+            return processPayment();
+        })
+        .then(function(result) {
+            console.log(result);
+            return generateTicket();
+        })
+        .then(function(result) {
+            console.log(result);
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+
+
+</script>
+<body>
+    
+</body>
+</html>

@@ -46,7 +46,7 @@
     }
 
     function generateIssueReceipt() {
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             if (issue_id > 0) {
                 resolve(
                     "Issue Receipt Generated Successfully\n" +
@@ -60,31 +60,29 @@
         });
     }
 
-    checkBookAvailability() 
-        .then(function(result) {
+    checkBookAvailability()
+        .then(function (result) {
             console.log(result);
             return issueBook()
         })
-        .then(function(result) {
+        .then(function (result) {
             console.log(result);
             return updateLibraryDatabase();
         })
-        .then(function(result) {
+        .then(function (result) {
             console.log(result);
             return generateIssueReceipt();
         })
-        .then(function(result) {
+        .then(function (result) {
             console.log(result);
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log(error);
         });
 
 
 </script>
-
 <body>
 
 </body>
-
 </html>

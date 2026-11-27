@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>29. E-Commerce Order Tracking</title>
+</head>
+<script>
+    // 29. E-Commerce Order Tracking: Create an application that fetches order details, checks payment status,
+    // checks delivery status and displays the final order status using async/await.
+    let order_id = 101;
+    let product_name = "Laptop";
+    let payment_status = true;
+    let delivery_status = true;
+
+    async function fetchOrderDetails() {
+        return new Promise(function(resolve, reject) {
+            resolve(
+                "Order ID : " + order_id + "\n" +
+                "Product Name : " + product_name
+            );
+        });
+    }
+
+    async function checkPaymentStatus() {
+        return new Promise(function(resolve, reject) {
+            if (payment_status == true) {
+                resolve("Payment Status : Successful");
+            } else {
+                reject("Payment Status : Failed");
+            }
+        });
+    }
+
+    async function checkDeliveryStatusname() {
+        return new Promise(function(resolve, reject) {
+            if (delivery_status == true) {
+                resolve("Delivery Status : Delivered");
+            } else {
+                reject("Delivery Status : In Transit");
+            }
+        });
+    }
+
+    async function OrderTracking() {
+        try {
+            let order = await fetchOrderDetails();
+            console.log(order);
+
+            let payment = await checkPaymentStatus();
+            console.log(payment);
+
+            let delivery = await checkDeliveryStatusname();
+            console.log(delivery);
+
+            console.log("Final Order Status : Order Completed");
+        } catch(error) {
+            console.log(error);
+            console.log("Final Order Status : Order Failed");
+        }
+    }
+
+    OrderTracking();
+</script>
+<body>
+    
+</body>
+</html>

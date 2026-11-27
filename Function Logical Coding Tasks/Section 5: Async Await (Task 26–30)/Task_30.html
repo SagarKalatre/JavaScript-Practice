@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30. Complete Banking Application</title>
+</head>
+<script>
+    // 30. Complete Banking Application: Create a Promise-based banking application to verify account number,
+    // check account balance, withdraw money, update account balance and generate a transaction receipt. Use
+    // async/await, setTimeout() and try/catch to handle asynchronous operations and errors.
+
+    let account_number = 123456;
+    let entered_account_number = 123456;
+    let account_balance = 10000;
+    let withdraw_amount = 2000;
+    let transaction_id = 101;
+
+    async function verifyAccountNumber() {
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                if (account_number == entered_account_number) {
+                    resolve("Account Number Verified Successfully");
+                } else {
+                    reject("Invalid Account Number");
+                }
+            }, 2000);
+        });
+    }
+
+    async function checkAccountBalance() {
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                if (account_balance >= withdraw_amount) {
+                    resolve("Available Balance : ₹" + account_balance);
+                } else {
+                    reject("Insufficient Account Balance");
+                }
+            }, 2000);
+        });
+    }
+
+    async function withdrawMoney() {
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                if (withdraw_amount > 0) {
+                    resolve("Money Withdrawn Successfully : ₹" + withdraw_amount);
+                } else {
+                    reject("Invalid Withdrawal Amount");
+                }
+            }, 2000);
+        });
+    }
+
+    async function updateAccountBalance() {
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                account_balance -= withdraw_amount;
+                resolve("Account Balance Updated Successfully");
+            }, 2000);
+        });
+    }
+
+    async function generateTransactionReceipt() {
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                resolve(
+                    "Transaction Receipt Generated Successfully\n" +
+                    "Transaction ID : " + transaction_id + "\n" +
+                    "Withdraw Amount : ₹" + withdraw_amount + "\n" +
+                    "Remaining Balance : ₹" + account_balance
+                );
+            }, 2000);
+        });
+    }
+
+    async function BankingApplication() {
+        try {
+            let account = await verifyAccountNumber();
+            console.log(account);
+
+            let balance = await checkAccountBalance();
+            console.log(balance);
+
+            let withdrow = await withdrawMoney();
+            console.log(withdrow);
+
+            let update = await updateAccountBalance();
+            console.log(update);
+
+            let receipt = await generateTransactionReceipt();
+            console.log(receipt);
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
+    BankingApplication();
+
+</script>
+<body>
+    
+</body>
+</html>

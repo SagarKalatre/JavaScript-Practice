@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27. Employee Payroll System:</title>
+</head>
+<script>
+    // 27. Employee Payroll System: Create separate async functions to fetch employee details, calculate salary,
+    // calculate deductions and generate the final salary slip. Execute them sequentially.
+    let employee_name = "Sagar";
+    let base_salary = 50000;
+    let hra = 8000;
+    let da = 5000;
+    let deductions = 3500;
+
+    async function fetchEmployeeDetails() {
+        return new Promise(function(resolve, reject) {
+            resolve("Employee Details : " + employee_name);
+        });
+    }
+
+    async function calculateSalary() {
+        return new Promise(function(resolve, reject) {
+            let total_salary = base_salary + hra + da;
+            resolve(total_salary);
+        });
+    }
+
+    async function calculateDeductions() {
+        return new Promise(function(resolve, reject) {
+            resolve(deductions);
+        });
+    }
+
+    async function generateFinalSalary(total_salary, deductions) {
+        return new Promise(function(resolve, reject) {
+            let final_salary = total_salary - deductions;
+
+            resolve(
+                "Basic Salary : " + base_salary + "\n" +
+                "HRA : " + hra + "\n" +
+                "DA : " + da + "\n" +
+                "Total Salary : " + total_salary + "\n" +
+                "Deductions : " + deductions + "\n" +
+                "Final Salary : " + final_salary
+            );
+        });
+    }
+
+    async function EmployeePayroll() {
+        let employee = await fetchEmployeeDetails();
+        console.log(employee);
+
+        let salary = await calculateSalary();
+        console.log("Salary Calculated Successfully");
+
+        let deduction = await calculateDeductions();
+        console.log("Deductions Calculated Successfully");
+
+        let slip = await generateFinalSalary(salary, deduction);
+        console.log(slip);
+    }
+
+    EmployeePayroll();
+
+</script>
+<body>
+    
+</body>
+</html>

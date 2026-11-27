@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28. Hospital Patient Management</title>
+</head>
+<script>
+    // 28. Hospital Patient Management: Create async functions to fetch patient details, check doctor availability, book
+    // an appointment and generate a confirmation message. Use async/await and try/catch.
+    let patient_name = "Jeeven";
+    let patient_age = 22;
+    let doctor_name = "Dr. Rahul";
+    let doctor_available = true;
+    let appointment_id = 101;
+
+    async function fetchPatientDetails() {
+        return new Promise(function(resolve, reject) {
+            resolve(
+                "Patient Name : " + patient_name + "\n" +
+                "Patient Age : " + patient_age
+            );
+        });
+    }
+
+    async function checkDoctorAvailability() {
+        return new Promise(function(resolve, reject) {
+            if (doctor_available == true) {
+                resolve("Doctor is Availabile");
+            } else {
+                reject("Doctor Not Availabile");
+            }
+        });
+    }
+
+    async function bookAppointment(params) {
+        return new Promise(function(resolve, reject) {
+            if (appointment_id > 0) {
+                resolve("Appointment Booked Successfully");
+            } else {
+                reject("Appointment Booked Failed");
+            }
+        })
+    }
+
+    async function generateConfirmation() {
+        return new Promise(function(resolve, reject) {
+            resolve(
+                "Appointment Confirmation Generated Successfully\n" +
+                "Appointment ID : " + appointment_id
+            );
+        });
+    }
+
+    async function HospitalPatientManagement() {
+        try {
+            let patient = await fetchPatientDetails();
+            console.log(patient);
+
+            let doctor = await checkDoctorAvailability();
+            console.log(doctor);
+
+            let appointment = await bookAppointment();
+            console.log(appointment);
+
+            let confirmation = await generateConfirmation();
+            console.log(confirmation);
+
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
+    HospitalPatientManagement();
+</script>
+<body>
+    
+</body>
+</html>

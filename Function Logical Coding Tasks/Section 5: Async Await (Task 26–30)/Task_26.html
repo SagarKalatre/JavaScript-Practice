@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>26. Sequential Student Data Fetching</title>
+</head>
+<script>
+    // 26. Sequential Student Data Fetching: Create an async function that fetches student IDs 101, 102 and 103 using
+    // await. Each operation should take 3 seconds. Display the IDs sequentially.
+
+    function fetchStudentId(student_id) {
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                resolve("Student ID : " + student_id);
+            }, 3000);
+        });
+    }
+
+    async function StudentDataFetching() {
+        let result1 = await fetchStudentId(101);
+        console.log(result1);
+
+        let result2 = await fetchStudentId(102);
+        console.log(result2);
+
+        let result3 = await fetchStudentId(103);
+        console.log(result3);
+    }
+    StudentDataFetching();
+    
+</script>
+<body>
+    <h1>Hii</h1>
+</body>
+</html>
